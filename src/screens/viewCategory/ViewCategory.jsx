@@ -13,7 +13,7 @@ export const ViewCategory = () => {
 		<div className={View.Container}>
 			<div className={View.Header}>Your Categories</div>
 			<div className={View.categoryList}>
-				{categories.current.map((category) => {
+				{categories.map((category) => {
 					return (
 						<div
 							key={category.id}

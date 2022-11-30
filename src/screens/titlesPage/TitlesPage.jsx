@@ -7,7 +7,6 @@ export function TitlesPage() {
 	const {
 		categories,
 		selectedCategory,
-		selectedTitle,
 		setSelectedTitle,
 		setOpen,
 		setEdit,
@@ -18,8 +17,8 @@ export function TitlesPage() {
 		<div className={Title.Container}>
 			<header className={Title.header}>Titles List</header>
 			<main className={Title.main}>
-				{categories.current
-					.filter((category) => category.categoryName === selectedCategory)[0]
+				{categories
+					?.filter((category) => category.categoryName === selectedCategory)[0]
 					?.titles.map((title) => (
 						<div key={title.id} className={Title.list}>
 							<Modal />
@@ -41,7 +40,7 @@ export function TitlesPage() {
 								}}>
 								🖊
 							</div>
-							<div className={Title.delete} onClick={deleteTitle}>
+							<div className={Title.delete} onClick={() => deleteTitle(title)}>
 								X
 							</div>
 						</div>

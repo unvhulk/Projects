@@ -5,7 +5,10 @@ import { useState } from "react";
 const CategoryContext = createContext();
 
 const CategoryProvider = ({ children }) => {
-	const categories = useRef(
+	// const categories = useRef(
+	// 	JSON.parse(localStorage.getItem("categories")) ?? []
+	// );
+	const [categories, setCategories] = useState(
 		JSON.parse(localStorage.getItem("categories")) ?? []
 	);
 	const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,15 +19,15 @@ const CategoryProvider = ({ children }) => {
 
 	useEffect(() => {
 		setIndex(
-			categories.current.findIndex(
+			categories.findIndex(
 				(category) => selectedCategory === category.categoryName
 			)
 		);
 	}, [selectedCategory]);
 
 	const addCategory = (newCategory) => {
-		categories.current = [...categories.current, newCategory];
-		localStorage.setItem("categories", JSON.stringify(categories.current));
+		setCategories([...categories, newCategory]);
+		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const selectCategory = (categoryName) => {
@@ -32,31 +35,55 @@ const CategoryProvider = ({ children }) => {
 	};
 
 	const addTitle = (title) => {
-		categories.current[index] = {
-			...categories.current[index],
-			titles: [
-				...categories.current[index].titles,
-				{ id: Date.now(), title, description: "" },
-			],
-		};
+		setCategories((categories) =>
+			categories.map((category) =>
+				category.categoryName === selectedCategory
+					? {
+							...category,
+							titles: [
+								...category.titles,
+								{ id: Date.now(), title, description: "" },
+							],
+					  }
+					: category
+			)
+		);
 
-		localStorage.setItem("categories", JSON.stringify(categories.current));
+		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const changeTitle = (newTitle) => {
-		categories.current[index].titles = categories.current[index].titles.map(
-			(currTitle) => (currTitle.id === newTitle.id ? newTitle : currTitle)
+		setCategories((categories) =>
+			categories.map((category) =>
+				category.categoryName === selectedCategory
+					? {
+							...category,
+							titles: category.titles.map((currTitle) =>
+								currTitle.id === newTitle.id ? newTitle : currTitle
+							),
+					  }
+					: category
+			)
 		);
 
-		localStorage.setItem("categories", JSON.stringify(categories.current));
+		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const deleteTitle = (title) => {
-		categories.current[index].titles = categories.current[index].titles.map(
-			(currTitle) => (currTitle.id === Title.id ? null : currTitle)
+		setCategories((categories) =>
+			categories.map((category) =>
+				category.categoryName === selectedCategory
+					? {
+							...category,
+							titles: category.titles.filter(
+								(currTitle) => currTitle.id !== title.id
+							),
+					  }
+					: category
+			)
 		);
 
-		localStorage.setItem("categories", JSON.stringify(categories.current));
+		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	return (

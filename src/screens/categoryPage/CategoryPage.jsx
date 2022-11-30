@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useCategory } from "../../contexts/category-context";
-import Cat from "./categoryPage.module.css";
+import Cat from "./CategoryPage.module.css";
 
 export const CategoryPage = () => {
 	const [title, setTitle] = useState("");

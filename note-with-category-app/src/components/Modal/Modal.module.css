@@ -1,0 +1,44 @@
+.Overlay {
+	display: grid;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.Modal {
+	display: grid;
+	padding: 2rem;
+	position: absolute;
+	z-index: 2;
+	background-color: var(--white);
+	top: 10rem;
+	left: 30%;
+	width: 30rem;
+	border: 1px solid var(--black);
+	border-radius: 1rem;
+}
+.input {
+	font-size: 1rem;
+	margin: 1rem;
+}
+.addDesc {
+	height: 5rem;
+}
+.btns {
+	display: grid;
+}
+.submit {
+	grid-row: 1/2;
+	background-color: var(--background);
+	color: var(--white);
+	cursor: pointer;
+}
+.btns > button {
+	grid-row: 1/2;
+	background-color: var(--background);
+	color: var(--white);
+	cursor: pointer;
+}

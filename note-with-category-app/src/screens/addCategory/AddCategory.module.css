@@ -1,0 +1,31 @@
+.Container {
+	display: grid;
+	justify-self: center;
+	align-self: center;
+}
+.Header {
+	display: grid;
+	font-size: 4rem;
+	color: var(--white);
+}
+.inputContainer {
+	width: 100%;
+	margin: 1rem 0;
+}
+.inputContainer > input {
+	width: 100%;
+	padding: 5px;
+	font-size: 2rem;
+	border: 2px solid var(--black);
+}
+.save {
+	display: grid;
+	justify-self: center;
+	border-radius: 2rem;
+	font-size: 2rem;
+	padding: 5px 5rem;
+}
+.save:hover {
+	background-color: var(--hover);
+	color: var(--white);
+}

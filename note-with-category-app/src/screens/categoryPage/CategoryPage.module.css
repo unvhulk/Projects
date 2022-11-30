@@ -1,0 +1,50 @@
+.Container {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	color: var(--white);
+}
+.header {
+	width: 100%;
+	font-size: 2rem;
+}
+.header > span {
+	color: var(--background-content);
+}
+.form {
+	display: grid;
+	justify-content: center;
+	align-self: flex-start;
+	font-size: 2rem;
+	gap: 1rem;
+}
+.label {
+	display: grid;
+	justify-self: center;
+}
+.input {
+	padding: 8px;
+	font-size: 2rem;
+}
+.add {
+	display: grid;
+	justify-self: center;
+	align-items: center;
+	border-radius: 2rem;
+	font-size: 2rem;
+	padding: 5px 5rem;
+}
+.add:hover {
+	cursor: pointer;
+	background-color: var(--hover);
+	color: var(--white);
+}
+.view {
+	display: grid;
+	justify-content: center;
+	text-decoration: underline;
+}
+.view:hover {
+	color: var(--hover);
+	cursor: pointer;
+}

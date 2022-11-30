@@ -14,8 +14,6 @@ export function TitlesPage() {
 		deleteTitle,
 	} = useCategory();
 
-	console.log(categories.current);
-
 	return (
 		<div className={Title.Container}>
 			<header className={Title.header}>Titles List</header>

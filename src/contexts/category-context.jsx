@@ -51,6 +51,14 @@ const CategoryProvider = ({ children }) => {
 		localStorage.setItem("categories", JSON.stringify(categories.current));
 	};
 
+	const deleteTitle = (title) => {
+		categories.current[index].titles = categories.current[index].titles.map(
+			(currTitle) => (currTitle.id === Title.id ? null : currTitle)
+		);
+
+		localStorage.setItem("categories", JSON.stringify(categories.current));
+	};
+
 	return (
 		<CategoryContext.Provider
 			value={{
@@ -62,6 +70,7 @@ const CategoryProvider = ({ children }) => {
 				selectedTitle,
 				setSelectedTitle,
 				changeTitle,
+				deleteTitle,
 				open,
 				setOpen,
 				edit,

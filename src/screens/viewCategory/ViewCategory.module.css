@@ -18,7 +18,7 @@
 }
 .categoryBox {
 	display: grid;
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 8fr 1fr;
 	justify-content: center;
 	align-items: center;
 	margin: 1rem;
@@ -38,12 +38,9 @@
 .categoryHeader {
 	display: grid;
 	align-self: center;
-	padding-left: 1rem;
+	padding-left: 8px;
 }
 .deleteCategory {
-	display: grid;
-	justify-self: end;
-	padding-right: 1rem;
 }
 .deleteCategory:hover {
 	color: var(--alert);

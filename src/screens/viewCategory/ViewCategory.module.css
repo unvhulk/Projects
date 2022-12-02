@@ -40,8 +40,7 @@
 	align-self: center;
 	padding-left: 8px;
 }
-.deleteCategory {
-}
+
 .deleteCategory:hover {
 	color: var(--alert);
 }

@@ -20,6 +20,7 @@
 }
 .categoryBox {
 	display: grid;
+	grid-template-columns: 3fr 1fr;
 	justify-content: center;
 	align-items: center;
 	margin: 1rem;
@@ -28,11 +29,25 @@
 	border: 1px solid var(--white);
 	border-radius: 2rem;
 	color: var(--white);
+	cursor: pointer;
 }
 .categoryBox:hover {
 	cursor: pointer;
 	background-color: var(--hover);
 	transform: scale(1.05);
+}
+.categoryHeader {
+	display: grid;
+	align-self: center;
+	padding-left: 1rem;
+}
+.deleteCategory {
+	display: grid;
+	justify-self: end;
+	padding-right: 1rem;
+}
+.deleteCategory:hover {
+	color: var(--alert);
 }
 .back {
 	display: grid;

@@ -5,21 +5,17 @@ import { useState } from "react";
 const CategoryContext = createContext();
 
 const CategoryProvider = ({ children }) => {
-	// const categories = useRef(
-	// 	JSON.parse(localStorage.getItem("categories")) ?? []
-	// );
 	const [categories, setCategories] = useState(
 		JSON.parse(localStorage.getItem("categories")) ?? []
 	);
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [selectedTitle, setSelectedTitle] = useState({});
-	const [index, setIndex] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [edit, setEdit] = useState(false);
 
 	useEffect(() => {
-		setIndex(findCategory(selectedCategory));
-	}, [selectedCategory]);
+		localStorage.setItem("categories", JSON.stringify(categories));
+	}, [categories]);
 
 	const findCategory = (category) => {
 		return categories.findIndex(
@@ -29,11 +25,16 @@ const CategoryProvider = ({ children }) => {
 
 	const addCategory = (newCategory) => {
 		setCategories([...categories, newCategory]);
-		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const selectCategory = (categoryName) => {
 		setSelectedCategory(categoryName);
+	};
+
+	const deleteCategory = (categoryID) => {
+		setCategories(
+			categories.filter((currCategory) => currCategory.id !== categoryID)
+		);
 	};
 
 	const addTitle = (title) => {
@@ -50,8 +51,6 @@ const CategoryProvider = ({ children }) => {
 					: category
 			)
 		);
-
-		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const changeTitle = (newTitle) => {
@@ -67,8 +66,6 @@ const CategoryProvider = ({ children }) => {
 					: category
 			)
 		);
-
-		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	const deleteTitle = (title) => {
@@ -84,8 +81,6 @@ const CategoryProvider = ({ children }) => {
 					: category
 			)
 		);
-
-		localStorage.setItem("categories", JSON.stringify(categories));
 	};
 
 	return (
@@ -96,6 +91,7 @@ const CategoryProvider = ({ children }) => {
 				selectedCategory,
 				addCategory,
 				selectCategory,
+				deleteCategory,
 				addTitle,
 				selectedTitle,
 				setSelectedTitle,

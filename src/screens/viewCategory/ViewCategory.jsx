@@ -3,7 +3,7 @@ import { useCategory } from "../../contexts/category-context";
 import View from "./ViewCategory.module.css";
 
 export const ViewCategory = () => {
-	const { categories } = useCategory();
+	const { categories, deleteCategory } = useCategory();
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -16,11 +16,17 @@ export const ViewCategory = () => {
 				<div className={View.categoryList}>
 					{categories.map((category) => {
 						return (
-							<div
-								key={category.id}
-								className={View.categoryBox}
-								onClick={() => navigate(`${category.categoryName}`)}>
-								{category.categoryName}
+							<div key={category.id} className={View.categoryBox}>
+								<div
+									className={View.categoryHeader}
+									onClick={() => navigate(`${category.categoryName}`)}>
+									{category.categoryName}
+								</div>
+								<div
+									className={View.deleteCategory}
+									onClick={() => deleteCategory(category.id)}>
+									X
+								</div>
 							</div>
 						);
 					})}

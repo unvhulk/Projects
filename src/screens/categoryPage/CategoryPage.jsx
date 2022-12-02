@@ -33,17 +33,21 @@ export const CategoryPage = () => {
 			<header className={Cat.header}>
 				You have selected <span> {name} </span> Category
 			</header>
-			<form className={Cat.form}>
+			<form className={Cat.form} onSubmit={handleAddTitle} aria-hidden='true'>
 				<div className={Cat.label}>Add new title</div>
 				<input
 					type='text'
 					className={Cat.input}
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
+					required
 				/>
-				<button className={Cat.add} onClick={handleAddTitle}>
-					Add Title
-				</button>
+				<div className={Cat.buttons}>
+					<button className={Cat.add}>Add Title</button>
+					<button className={Cat.add} onClick={() => navigate("/category")}>
+						Back
+					</button>
+				</div>
 				<div className={Cat.view} onClick={showTitles}>
 					View Added Titles
 				</div>

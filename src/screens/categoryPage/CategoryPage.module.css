@@ -26,6 +26,10 @@
 	padding: 8px;
 	font-size: 2rem;
 }
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
 .add {
 	display: grid;
 	justify-self: center;

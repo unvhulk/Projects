@@ -18,12 +18,14 @@ const CategoryProvider = ({ children }) => {
 	const [edit, setEdit] = useState(false);
 
 	useEffect(() => {
-		setIndex(
-			categories.findIndex(
-				(category) => selectedCategory === category.categoryName
-			)
-		);
+		setIndex(findCategory(selectedCategory));
 	}, [selectedCategory]);
+
+	const findCategory = (category) => {
+		return categories.findIndex(
+			(currCategory) => category === currCategory.categoryName
+		);
+	};
 
 	const addCategory = (newCategory) => {
 		setCategories([...categories, newCategory]);
@@ -90,6 +92,7 @@ const CategoryProvider = ({ children }) => {
 		<CategoryContext.Provider
 			value={{
 				categories,
+				findCategory,
 				selectedCategory,
 				addCategory,
 				selectCategory,

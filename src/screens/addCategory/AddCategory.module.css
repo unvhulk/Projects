@@ -18,6 +18,10 @@
 	font-size: 2rem;
 	border: 2px solid var(--black);
 }
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
 .save {
 	display: grid;
 	justify-self: center;

@@ -12,18 +12,29 @@ export const ViewCategory = () => {
 	) : (
 		<div className={View.Container}>
 			<div className={View.Header}>Your Categories</div>
-			<div className={View.categoryList}>
-				{categories.map((category) => {
-					return (
-						<div
-							key={category.id}
-							className={View.categoryBox}
-							onClick={() => navigate(`${category.categoryName}`)}>
-							{category.categoryName}
-						</div>
-					);
-				})}
-			</div>
+			{categories.length !== 0 ? (
+				<div className={View.categoryList}>
+					{categories.map((category) => {
+						return (
+							<div
+								key={category.id}
+								className={View.categoryBox}
+								onClick={() => navigate(`${category.categoryName}`)}>
+								{category.categoryName}
+							</div>
+						);
+					})}
+				</div>
+			) : (
+				<h1 className={View.emptyState}>
+					No Categories found. Add new{" "}
+					<span onClick={() => navigate("/add")}> Category </span>
+				</h1>
+			)}
+
+			<button className={View.back} onClick={() => navigate("/")}>
+				Back
+			</button>
 		</div>
 	);
 };

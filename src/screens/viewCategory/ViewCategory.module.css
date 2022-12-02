@@ -1,5 +1,6 @@
 .Container {
 	display: grid;
+	grid-template-rows: 20% 60% 20%;
 	align-items: center;
 }
 .Header {
@@ -12,7 +13,7 @@
 .categoryList {
 	display: grid;
 	justify-content: center;
-	align-self: flex-start;
+	align-self: center;
 	grid-template-columns: repeat(auto-fit, 20rem);
 	grid-template-rows: repeat(auto-fill, 5rem);
 	width: 100vw;
@@ -32,4 +33,33 @@
 	cursor: pointer;
 	background-color: var(--hover);
 	transform: scale(1.05);
+}
+.back {
+	display: grid;
+	justify-self: center;
+	font-size: 2rem;
+	border-radius: 2rem;
+	padding: 8px 5rem;
+}
+.back:hover {
+	cursor: pointer;
+	color: var(--white);
+	background-color: var(--black);
+}
+.emptyState {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: 100%;
+	justify-self: center;
+	font-size: 2rem;
+	color: var(--white);
+}
+.emptyState > span {
+	padding-left: 1rem;
+	cursor: pointer;
+	color: var(--black);
+}
+.emptyState > span:hover {
+	text-decoration: underline;
+	color: var(--background-content);
 }

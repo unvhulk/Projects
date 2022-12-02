@@ -45,3 +45,19 @@
 .delete:hover {
 	color: var(--alert);
 }
+.emptyState {
+	display: grid;
+}
+.emptyState > h1 {
+	color: var(--white);
+	font-family: Monospace;
+	font-size: 2rem;
+}
+.span {
+	color: var(--hover);
+}
+.span:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: var(--background-content);
+}

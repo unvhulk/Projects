@@ -6,28 +6,58 @@ import Add from "./AddCategory.module.css";
 export const AddCategory = () => {
 	const navigate = useNavigate();
 	const [input, setInput] = useState("");
-	const { addCategory } = useCategory();
+	const { addCategory, findCategory } = useCategory();
+
+	const validate = (value) => {
+		//Max 30 characters, Alphabets, Unique
+		if (!/^[a-zA-Z]+$/.test(value)) {
+			alert("All characters should be Alphabets");
+			return false;
+		}
+		if (!(value.length <= 30)) {
+			alert("Characters length must be at most 30 characters");
+			return false;
+		}
+		if (findCategory(value) !== -1) {
+			alert("Category already exists, Please choose another name");
+			return false;
+		}
+
+		return true;
+	};
 
 	const saveHandler = (e) => {
 		e.preventDefault();
-		if (input.length !== 0) {
-			addCategory({ id: Date.now(), categoryName: input, titles: [] });
-			navigate("/");
+		if (validate(input)) {
+			addCategory({
+				id: Date.now(),
+				createdAt: Date(),
+				categoryName: input,
+				titles: [],
+			});
+			setInput("");
+			alert("Category added successfully");
 		}
 	};
 
 	return (
 		<div className={Add.Container}>
 			<div className={Add.Header}>Enter Category Name</div>
-			<form onClick={saveHandler}>
+			<form onSubmit={saveHandler}>
 				<div className={Add.inputContainer}>
 					<input
 						type='text'
 						value={input}
 						onChange={(e) => setInput(e.target.value)}
+						required
 					/>
 				</div>
-				<button className={Add.save}>Save</button>
+				<div className={Add.buttons}>
+					<button className={Add.save}>Save</button>
+					<button className={Add.save} onClick={() => navigate("/")}>
+						Back
+					</button>
+				</div>
 			</form>
 		</div>
 	);
